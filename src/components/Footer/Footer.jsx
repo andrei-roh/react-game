@@ -8,6 +8,9 @@ const FooterBlock = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  background-color: #f3727b;
+  padding-top: 15px;
+  padding-bottom: 15px;
 `;
 
 const FooterElement = styled.div`

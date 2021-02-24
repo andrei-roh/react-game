@@ -17,6 +17,11 @@ const GameBlock = styled.div`
   align-items: center;
 `;
 
+const ImageBlock = styled.div`
+  border: 12px solid #f3727b;
+  height: 120px;
+`;
+
 export class Game extends React.Component {
   state = initialData
   imageState = ImagesData
@@ -99,7 +104,9 @@ export class Game extends React.Component {
   render() {
     return (
       <GameBlock>
-        <div><img width='240px' src={this.imageState.images.sheep.source} alt={this.imageState.images.sheep.title}></img></div>
+        <ImageBlock>
+          <img width='243px' src={this.imageState.images.sheep.source} alt={this.imageState.images.sheep.title} />
+        </ImageBlock>
         <DragDropContext onDragStart={this.onDragStart} onDragEnd={this.onDragEnd}>
           <Container>
             {this.state.columnOrder.map((columnId) => {

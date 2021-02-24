@@ -1,14 +1,25 @@
 import React from 'react';
+import styled from 'styled-components'
+import { Header } from './components/Header/Header';
 import { Game } from './components/Game/Game';
 import { Footer } from './components/Footer/Footer';
+
+const BigBlock = styled.div`
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+`;
+
 
 export class App extends React.Component {
   render() {
     return (
-      <div>
+      <BigBlock>
+        <Header />
         <Game />
         <Footer />
-      </div>
+      </BigBlock>
     );
   }
 };
