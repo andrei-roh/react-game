@@ -1,7 +1,7 @@
 const initialData = {
   letters: {
     'letter1': { id: 'letter1', content: 'B'},
-    'letter2': { id: 'letter2', content: 'C'},
+    'letter2': { id: 'letter2', content: 'F'},
     'letter3': { id: 'letter3', content: 'K'},
     'letter4': { id: 'letter4', content: 'A'},
     'letter5': { id: 'letter5', content: 'Q'},
@@ -9,14 +9,23 @@ const initialData = {
     'letter7': { id: 'letter7', content: 'A'},
     'letter8': { id: 'letter8', content: 'E'},
     'letter9': { id: 'letter9', content: 'T'},
-    'letter10': { id: 'letter10', content: 'J'},
+    'letter10': { id: 'letter10', content: 'G'},
     'letter11': { id: 'letter11', content: 'O'},
-    'letter12': { id: 'letter12', content: 'E'},
+    'letter12': { id: 'letter12', content: 'I'},
     'letter13': { id: 'letter13', content: 'C'},
     'letter14': { id: 'letter14', content: 'H'},
     'letter15': { id: 'letter15', content: 'O'},
     'letter16': { id: 'letter16', content: 'E'},
     'letter17': { id: 'letter17', content: 'P'},
+    'letter18': { id: 'letter18', content: 'R'},
+    'letter19': { id: 'letter19', content: 'N'},
+    'letter20': { id: 'letter20', content: 'D'},
+    'letter21': { id: 'letter21', content: 'J'},
+    'letter22': { id: 'letter22', content: 'L'},
+    'letter23': { id: 'letter23', content: 'H'},
+    'letter24': { id: 'letter24', content: 'F'},
+    'letter25': { id: 'letter25', content: 'C'},
+
   },
   columns: {
     'column-1': {
@@ -39,7 +48,10 @@ const initialData = {
         'letter14',
         'letter15',
         'letter16',
-        'letter17'
+        'letter17',
+        'letter18',
+        'letter19',
+        'letter20',
       ],
     },
     'column-2': {

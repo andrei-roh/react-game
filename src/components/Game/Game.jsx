@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components'
 import { DragDropContext } from 'react-beautiful-dnd';
 import initialData from './components/initial-data';
-import ImagesData from './components/images-data';
+import AnimalsData from './components/animals-data';
 import Column from './components/column';
 
 const Container = styled.div`
@@ -19,12 +19,12 @@ const GameBlock = styled.div`
 
 const ImageBlock = styled.div`
   border: 12px solid #f3727b;
-  height: 120px;
+  height: 133px;
 `;
 
 export class Game extends React.Component {
   state = initialData
-  imageState = ImagesData
+  animalState = AnimalsData
 
   onDragStart = () => {
     document.body.style.transition = 'background-color 0.2s ease';
@@ -45,6 +45,7 @@ export class Game extends React.Component {
 
     const start = this.state.columns[source.droppableId];
     const finish = this.state.columns[destination.droppableId];
+
     //Moving inside container
     if (start === finish) {
       const newLetterIds = Array.from(start.letterIds);
@@ -94,18 +95,20 @@ export class Game extends React.Component {
     this.setState(newState);
 
     let gameResult = newFinish.letterIds.map(letterId => this.state.letters[letterId].content);
-
-    if (gameResult.join('') === this.imageState.images.sheep.answer) {
+    if (gameResult.join('') === this.animalState.data.[this.changeData].answer) {
       console.log('WIN')
-      document.activeElement.style.backgroundColor = `lightgreen`;
     }
   }
+
+  changeData = AnimalsData.list[Math.floor(Math.random() * AnimalsData.list.length)];
+
+    // return this.animalState.data[choiseItem].source;
 
   render() {
     return (
       <GameBlock>
         <ImageBlock>
-          <img width='243px' src={this.imageState.images.sheep.source} alt={this.imageState.images.sheep.title} />
+          <img width='200px' src={this.animalState.data.[this.changeData].source} alt={this.animalState.data.[this.changeData].title} />
         </ImageBlock>
         <DragDropContext onDragStart={this.onDragStart} onDragEnd={this.onDragEnd}>
           <Container>
