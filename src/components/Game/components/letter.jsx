@@ -3,13 +3,15 @@ import styled from 'styled-components';
 import { Draggable } from 'react-beautiful-dnd';
 
 const Container = styled.div`
-  padding: 8px;
+  padding: 1.5px;
   border: 3px solid #f3727b;
   border-radius: 50%;
   &:focus {
     outline: none;
     border-color: lightgreen;
   }
+
+  margin-right: 1px;
 
   background-color: ${props => (props.isDragging ? 'lightgreen' : 'white')};
   width: 3vw;
@@ -19,7 +21,6 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
 
-  font-weight: 900;
   font-size: 20px;
 `;
 

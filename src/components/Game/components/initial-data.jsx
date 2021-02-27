@@ -1,9 +1,9 @@
 const initialData = {
   letters: {
-    'letter1': { id: 'letter1', content: 'B'},
+    'letter1': { id: 'letter1', content: `B`},
     'letter2': { id: 'letter2', content: 'F'},
     'letter3': { id: 'letter3', content: 'K'},
-    'letter4': { id: 'letter4', content: 'A'},
+    'letter4': { id: 'letter4', content: 'J'},
     'letter5': { id: 'letter5', content: 'Q'},
     'letter6': { id: 'letter6', content: 'S'},
     'letter7': { id: 'letter7', content: 'A'},
@@ -20,16 +20,16 @@ const initialData = {
     'letter18': { id: 'letter18', content: 'R'},
     'letter19': { id: 'letter19', content: 'N'},
     'letter20': { id: 'letter20', content: 'D'},
-    'letter21': { id: 'letter21', content: 'J'},
-    'letter22': { id: 'letter22', content: 'L'},
-    'letter23': { id: 'letter23', content: 'H'},
-    'letter24': { id: 'letter24', content: 'F'},
-    'letter25': { id: 'letter25', content: 'C'},
-
+    'letter21': { id: 'letter21', content: 'O'},
+    'letter22': { id: 'letter22', content: 'Y'},
+    'letter23': { id: 'letter23', content: 'L'},
+    'letter24': { id: 'letter24', content: 'H'},
+    'letter25': { id: 'letter25', content: 'A'},
+    'letter26': { id: 'letter26', content: 'U'},
   },
   columns: {
-    'column-1': {
-      id: 'column-1',
+    'column1': {
+      id: 'column1',
       title: 'Set of letters',
       letterIds: [
         'letter1',
@@ -52,15 +52,21 @@ const initialData = {
         'letter18',
         'letter19',
         'letter20',
+        'letter21',
+        'letter22',
+        'letter23',
+        'letter24',
+        'letter25',
+        'letter26',
       ],
     },
-    'column-2': {
-      id: 'column-2',
+    'column2': {
+      id: 'column2',
       title: 'Letter',
       letterIds: [],
     },
   },
-  columnOrder: [ 'column-1', 'column-2']
+  columnOrder: [ 'column1', 'column2']
 };
 
 export default initialData;

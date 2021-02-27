@@ -9,8 +9,8 @@ const BigBlock = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  font-family: 'Averia Libre', cursive;
 `;
-
 
 export class App extends React.Component {
   render() {

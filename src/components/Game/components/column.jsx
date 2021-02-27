@@ -19,6 +19,8 @@ const LetterList = styled.div`
   transition: background-color 0.2s ease;
   min-height: 5vw;
   display: flex;
+  justify-content: center;
+  overflow: hidden;
 `;
 
 export default class column extends React.Component {

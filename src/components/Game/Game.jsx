@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components'
 import { DragDropContext } from 'react-beautiful-dnd';
 import initialData from './components/initial-data';
-import AnimalsData from './components/animals-data';
+import animalsData from './components/animals-data';
 import Column from './components/column';
 
 const Container = styled.div`
@@ -23,8 +23,10 @@ const ImageBlock = styled.div`
 `;
 
 export class Game extends React.Component {
-  state = initialData
-  animalState = AnimalsData
+  state = initialData;
+  shuffle = this.state.columns.column1.letterIds.sort(() => Math.round(Math.random() * 100) - 50);
+  animalState = animalsData;
+  changeData = animalsData.list[Math.floor(Math.random() * animalsData.list.length)];
 
   onDragStart = () => {
     document.body.style.transition = 'background-color 0.2s ease';
@@ -45,7 +47,6 @@ export class Game extends React.Component {
 
     const start = this.state.columns[source.droppableId];
     const finish = this.state.columns[destination.droppableId];
-
     //Moving inside container
     if (start === finish) {
       const newLetterIds = Array.from(start.letterIds);
@@ -99,10 +100,6 @@ export class Game extends React.Component {
       console.log('WIN')
     }
   }
-
-  changeData = AnimalsData.list[Math.floor(Math.random() * AnimalsData.list.length)];
-
-    // return this.animalState.data[choiseItem].source;
 
   render() {
     return (
