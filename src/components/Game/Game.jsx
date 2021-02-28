@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components'
 import { DragDropContext } from 'react-beautiful-dnd';
 import initialData from './components/initial-data';
-import animalsData from './components/animals-data';
 import Column from './components/column';
 
 const Container = styled.div`
@@ -24,9 +23,9 @@ const ImageBlock = styled.div`
 
 export class Game extends React.Component {
   state = initialData;
+  dataState = this.props.dataType;
   shuffle = this.state.columns.column1.letterIds.sort(() => Math.round(Math.random() * 100) - 50);
-  animalState = animalsData;
-  changeData = animalsData.list[Math.floor(Math.random() * animalsData.list.length)];
+  changeData = this.dataState.list[Math.floor(Math.random() * this.dataState.list.length)];
 
   onDragStart = () => {
     document.body.style.transition = 'background-color 0.2s ease';
@@ -96,16 +95,17 @@ export class Game extends React.Component {
     this.setState(newState);
 
     let gameResult = newFinish.letterIds.map(letterId => this.state.letters[letterId].content);
-    if (gameResult.join('') === this.animalState.data.[this.changeData].answer) {
+    if (gameResult.join('') === this.dataState.data.[this.changeData].answer) {
       console.log('WIN')
     }
   }
 
   render() {
+    console.log(this.props.dataType)
     return (
       <GameBlock>
         <ImageBlock>
-          <img width='200px' src={this.animalState.data.[this.changeData].source} alt={this.animalState.data.[this.changeData].title} />
+          <img width='200px' src={this.dataState.data.[this.changeData].source} alt={this.dataState.data.[this.changeData].title} />
         </ImageBlock>
         <DragDropContext onDragStart={this.onDragStart} onDragEnd={this.onDragEnd}>
           <Container>

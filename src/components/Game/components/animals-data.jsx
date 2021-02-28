@@ -19,7 +19,7 @@ import sheepImage from '../../assets/images/animals/sheep.jpg';
 import tigerImage from '../../assets/images/animals/tiger.jpg';
 import turtleImage from '../../assets/images/animals/turtle.jpg';
 
-const AnimalsData = {
+const animalsData = {
   data: {
     bear: {source: bearImage, title: 'Carnivoran mammals', answer: 'BEAR'},
     bird: {source: birdImage, title: 'Aves', answer: 'BIRD'},
@@ -66,4 +66,4 @@ const AnimalsData = {
   ]
 }
 
-export default AnimalsData;
+export default animalsData;

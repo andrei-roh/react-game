@@ -20,7 +20,7 @@ const initialData = {
     'letter18': { id: 'letter18', content: 'R'},
     'letter19': { id: 'letter19', content: 'N'},
     'letter20': { id: 'letter20', content: 'D'},
-    'letter21': { id: 'letter21', content: 'O'},
+    'letter21': { id: 'letter21', content: 'C'},
     'letter22': { id: 'letter22', content: 'Y'},
     'letter23': { id: 'letter23', content: 'L'},
     'letter24': { id: 'letter24', content: 'H'},

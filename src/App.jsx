@@ -1,5 +1,7 @@
 import React from 'react';
 import styled from 'styled-components'
+import animalsData from './components/Game/components/animals-data';
+import techData from './components/Game/components/tech-data';
 import { Header } from './components/Header/Header';
 import { Game } from './components/Game/Game';
 import { Footer } from './components/Footer/Footer';
@@ -13,11 +15,19 @@ const BigBlock = styled.div`
 `;
 
 export class App extends React.Component {
+  state = {
+    dataType: animalsData
+  };
+
+  updateData = (value) => {
+    this.setState({ dataType: value });
+  };
+
   render() {
     return (
       <BigBlock>
-        <Header />
-        <Game />
+        <Header updateData={this.updateData} />
+        <Game dataType={this.state.dataType} />
         <Footer />
       </BigBlock>
     );
