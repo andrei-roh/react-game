@@ -46,6 +46,7 @@ export class Game extends React.Component {
 
     const start = this.state.columns[source.droppableId];
     const finish = this.state.columns[destination.droppableId];
+
     //Moving inside container
     if (start === finish) {
       const newLetterIds = Array.from(start.letterIds);
@@ -101,7 +102,7 @@ export class Game extends React.Component {
   }
 
   render() {
-    console.log(this.props.dataType)
+    // console.log(this.props.dataType)
     return (
       <GameBlock>
         <ImageBlock>

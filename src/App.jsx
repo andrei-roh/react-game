@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components'
 import animalsData from './components/Game/components/animals-data';
-import techData from './components/Game/components/tech-data';
 import { Header } from './components/Header/Header';
 import { Game } from './components/Game/Game';
 import { Footer } from './components/Footer/Footer';

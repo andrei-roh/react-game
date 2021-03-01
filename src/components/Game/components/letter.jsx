@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Draggable } from 'react-beautiful-dnd';
 
 const Container = styled.div`
-  padding: 1.5px;
+  padding: 0.5px;
   border: 3px solid #f3727b;
   border-radius: 50%;
   &:focus {
