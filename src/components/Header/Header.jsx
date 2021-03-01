@@ -7,7 +7,9 @@ import PetsIcon from '@material-ui/icons/Pets';
 import ComputerIcon from '@material-ui/icons/Computer';
 import HelpIcon from '@material-ui/icons/Help';
 import VolumeUpIcon from '@material-ui/icons/VolumeUp';
-import VolumeOffIcon from '@material-ui/icons/VolumeOff';
+// import VolumeOffIcon from '@material-ui/icons/VolumeOff';
+import Help from './components/help';
+import PlaySound from '../Sound';
 
 const HeaderBlock = styled.div`
   display: flex;
@@ -17,6 +19,8 @@ const HeaderBlock = styled.div`
 `;
 
 const HeaderElement = styled.div`
+  display: flex;
+  flex-direction: row;
   padding: 10px 15px 15px
 `;
 
@@ -24,7 +28,9 @@ const Button = styled.button`
   cursor: pointer;
   margin-left: 5px;
   margin-right: 5px;
-  padding: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-size: 18px;
   font-family: 'Averia Libre', cursive;
   background-color: #f3727b;
@@ -37,9 +43,23 @@ const Button = styled.button`
   &:focus {
     outline: none;
   }
+  &:hover {
+    box-shadow: 0 5px 10px -3px rgba(0, 0, 0, 0.1), 0 1px 0px rgba(0, 0, 0, 0.1);
+  }
 `;
 
 export class Header extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      showHelp: false
+    };
+  }
+  toggleHelp() {
+    this.setState({
+      showHelp: !this.state.showHelp
+    });
+  }
   render() {
     return (
       <HeaderBlock>
@@ -53,9 +73,15 @@ export class Header extends React.Component {
           <Button onClick={() => {this.props.updateData(techData)}}><ComputerIcon /></Button>
         </HeaderElement>
         <HeaderElement>
-          <Button><HelpIcon /></Button>
-          <Button><VolumeUpIcon /></Button>
+          <Button onClick={this.toggleHelp.bind(this)}><HelpIcon /></Button>
+          <Button onClick={() => PlaySound}><VolumeUpIcon /></Button>
         </HeaderElement>
+        {this.state.showHelp ?
+          <Help
+            closePopup={this.toggleHelp.bind(this)}
+          />
+          : null
+        }
       </HeaderBlock>
     );
   }

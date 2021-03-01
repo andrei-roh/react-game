@@ -62,7 +62,7 @@ const initialData = {
     },
     'column2': {
       id: 'column2',
-      title: 'Letter',
+      title: 'Word',
       letterIds: [],
     },
   },
