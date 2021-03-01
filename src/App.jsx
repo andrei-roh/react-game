@@ -17,7 +17,6 @@ export class App extends React.Component {
   state = {
     dataType: animalsData
   };
-
   updateData = (value) => {
     this.setState({ dataType: value });
   };

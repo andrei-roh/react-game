@@ -22,6 +22,10 @@ const Container = styled.div`
   align-items: center;
 
   font-size: 20px;
+  &:hover {
+    box-shadow: 0 5px 10px -3px rgba(0, 0, 0, 0.1), 0 1px 0px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+  }
 `;
 
 export default class Letter extends React.Component {

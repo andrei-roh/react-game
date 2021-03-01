@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import CancelIcon from '@material-ui/icons/Cancel';
+import PlaySound from '../../Sound';
 
 const PopUpHelp = styled.div`
   position: fixed;
@@ -68,7 +69,9 @@ class Help extends React.Component {
             If necessary, letters can be returned to the "Set of Letters", and also swap in the "Word".
             For each guessed word, you get +1 to the score.
           </div>
-        <Button onClick={this.props.closePopup}><CancelIcon /></Button>
+        <div onClick={PlaySound}>
+          <Button onClick={this.props.closePopup}><CancelIcon /></Button>
+        </div>
         </PopUpHelpInner>
       </PopUpHelp>
     );

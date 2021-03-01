@@ -45,6 +45,7 @@ const Button = styled.button`
   }
   &:hover {
     box-shadow: 0 5px 10px -3px rgba(0, 0, 0, 0.1), 0 1px 0px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
   }
 `;
 
@@ -52,7 +53,8 @@ export class Header extends React.Component {
   constructor() {
     super();
     this.state = {
-      showHelp: false
+      showHelp: false,
+      sound: true,
     };
   }
   toggleHelp() {
@@ -64,17 +66,27 @@ export class Header extends React.Component {
     return (
       <HeaderBlock>
         <HeaderElement>
-          <a href='.'>
-            <img width='80px' src={gameLogo} alt='gameLogo' />
-          </a>
+          <div onClick={PlaySound}>
+            <a href='.'>
+              <img width='80px' src={gameLogo} alt='gameLogo' />
+            </a>
+          </div>
         </HeaderElement>
         <HeaderElement>
-          <Button onClick={() => {this.props.updateData(animalsData)}}><PetsIcon /></Button>
-          <Button onClick={() => {this.props.updateData(techData)}}><ComputerIcon /></Button>
+          <div onClick={PlaySound}>
+            <Button onClick={() => {this.props.updateData(animalsData)}}><PetsIcon /></Button>
+          </div>
+          <div onClick={PlaySound}>
+            <Button onClick={() => {this.props.updateData(techData)}}><ComputerIcon /></Button>
+          </div>
         </HeaderElement>
         <HeaderElement>
-          <Button onClick={this.toggleHelp.bind(this)}><HelpIcon /></Button>
-          <Button onClick={() => PlaySound}><VolumeUpIcon /></Button>
+          <div onClick={PlaySound}>
+            <Button onClick={this.toggleHelp.bind(this)}><HelpIcon /></Button>
+          </div>
+          <div onClick={PlaySound}>
+            <Button><VolumeUpIcon /></Button>
+          </div>
         </HeaderElement>
         {this.state.showHelp ?
           <Help

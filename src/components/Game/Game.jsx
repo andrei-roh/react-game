@@ -29,6 +29,9 @@ export class Game extends React.Component {
 
   onDragStart = () => {
     document.body.style.transition = 'background-color 0.2s ease';
+    const audio = new Audio();
+    audio.src = `https://zvukipro.com/uploads/files/2019-09/1568274526_c8fd8d10309e3e0.mp3`;
+    audio.play();
   }
 
   onDragEnd = result => {
@@ -99,6 +102,10 @@ export class Game extends React.Component {
     if (gameResult.join('') === this.dataState.data.[this.changeData].answer) {
       console.log('WIN')
     }
+    const audio = new Audio();
+    audio.src = `https://zvukipro.com/uploads/files/2019-09/1568274526_c8fd8d10309e3e0.mp3`;
+    audio.play();
+
   }
 
   render() {
