@@ -45,8 +45,8 @@ export class Game extends React.Component {
   };
 
   onDragEnd = result => {
-    document.body.style.color = 'inherit';
-    document.body.style.backgroundColor = `inherit`;
+    // document.body.style.color = 'inherit';
+    // document.body.style.backgroundColor = `inherit`;
     PlaySound(this.props.showSound, this.audioEndTurn);
 
     const { destination, source, draggableId } = result;
@@ -114,8 +114,8 @@ export class Game extends React.Component {
       this.props.updateScore(this.props.score);
       PlaySound(this.props.showSound, this.audioWin);
 
-      this.dataState = this.props.dataType;
-      this.changeData = this.props.dataType.list[Math.floor(Math.random() * this.props.dataType.list.length)];
+      this.dataState = gameData;
+      this.changeData = this.dataState.list[Math.floor(Math.random() * this.dataState.list.length)];
     }
   }
 
