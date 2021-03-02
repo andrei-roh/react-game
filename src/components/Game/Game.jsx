@@ -2,7 +2,9 @@ import React from 'react';
 import styled from 'styled-components'
 import { DragDropContext } from 'react-beautiful-dnd';
 import initialData from './components/initial-data';
+import gameData from './components/game-data';
 import Column from './components/column';
+import PlaySound from '../Sound';
 
 const Container = styled.div`
   display: flex;
@@ -14,38 +16,47 @@ const GameBlock = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
 `;
 
 const ImageBlock = styled.div`
-  border: 12px solid #f3727b;
+  border: 6px solid #f3727b;
   height: 133px;
 `;
 
 export class Game extends React.Component {
   state = initialData;
-  dataState = this.props.dataType;
   shuffle = this.state.columns.column1.letterIds.sort(() => Math.round(Math.random() * 100) - 50);
+
+  dataState = gameData;
   changeData = this.dataState.list[Math.floor(Math.random() * this.dataState.list.length)];
+
+  audioStartTurn = `https://zvukipro.com/uploads/files/2020-03/1585120872_mb_card_deal_08.mp3`
+  audioEndTurn = `https://zvukipro.com/uploads/files/2020-03/1585121168_playing_cards_deck_set_down_on_table_20495.mp3`
+  audioWin = `https://zvukipro.com/uploads/files/2020-11/1604629147_7ddf02d658682f1.mp3`
+
+  changeImage = (array) => {
+    return array.list[Math.floor(Math.random() * array.list.length)]
+  };
 
   onDragStart = () => {
     document.body.style.transition = 'background-color 0.2s ease';
-    const audio = new Audio();
-    audio.src = `https://zvukipro.com/uploads/files/2019-09/1568274526_c8fd8d10309e3e0.mp3`;
-    audio.play();
-  }
+    PlaySound(this.props.showSound, this.audioStartTurn);
+  };
 
   onDragEnd = result => {
     document.body.style.color = 'inherit';
     document.body.style.backgroundColor = `inherit`;
+    PlaySound(this.props.showSound, this.audioEndTurn);
 
     const { destination, source, draggableId } = result;
     if (!destination) {
       return;
-    }
+    };
 
     if (destination.droppableId === source.droppableId && destination.index === source.index) {
       return;
-    }
+    };
 
     const start = this.state.columns[source.droppableId];
     const finish = this.state.columns[destination.droppableId];
@@ -81,7 +92,7 @@ export class Game extends React.Component {
       letterIds: startLetterIds,
     };
 
-    const finishLetterIds = Array.from(finish.letterIds);
+    let finishLetterIds = Array.from(finish.letterIds);
     finishLetterIds.splice(destination.index, 0, draggableId);
     const newFinish = {
       ...finish,
@@ -100,16 +111,15 @@ export class Game extends React.Component {
 
     let gameResult = newFinish.letterIds.map(letterId => this.state.letters[letterId].content);
     if (gameResult.join('') === this.dataState.data.[this.changeData].answer) {
-      console.log('WIN')
-    }
-    const audio = new Audio();
-    audio.src = `https://zvukipro.com/uploads/files/2019-09/1568274526_c8fd8d10309e3e0.mp3`;
-    audio.play();
+      this.props.updateScore(this.props.score);
+      PlaySound(this.props.showSound, this.audioWin);
 
+      this.dataState = this.props.dataType;
+      this.changeData = this.props.dataType.list[Math.floor(Math.random() * this.props.dataType.list.length)];
+    }
   }
 
   render() {
-    // console.log(this.props.dataType)
     return (
       <GameBlock>
         <ImageBlock>

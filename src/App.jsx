@@ -1,9 +1,11 @@
 import React from 'react';
-import styled from 'styled-components'
-import animalsData from './components/Game/components/animals-data';
+import styled, { ThemeProvider } from 'styled-components'
 import { Header } from './components/Header/Header';
 import { Game } from './components/Game/Game';
 import { Footer } from './components/Footer/Footer';
+
+import { GlobalStyles } from './components/globalStyles';
+import { lightTheme, darkTheme } from './components/Themes'
 
 const BigBlock = styled.div`
   height: 100vh;
@@ -14,20 +16,49 @@ const BigBlock = styled.div`
 `;
 
 export class App extends React.Component {
-  state = {
-    dataType: animalsData
+  constructor() {
+    super();
+    this.state = {
+      showSound: false,
+      showNight: false,
+      theme: 'light',
+      score: 0
+    };
+  }
+  updateSound = (showSound) => {
+    this.setState({ showSound: !showSound})
   };
-  updateData = (value) => {
-    this.setState({ dataType: value });
+  updateMode = (showNight) => {
+    this.setState({ showNight: !showNight});
+    this.state.theme === 'light' ? this.setState({ theme: 'dark'}) : this.setState({ theme: 'light'});
+  };
+  updateScore = (score) => {
+    this.setState({ score: score + 1})
   };
 
   render() {
     return (
+      <ThemeProvider theme={this.state.theme === 'light' ? lightTheme : darkTheme}>
+      <GlobalStyles/>
       <BigBlock>
-        <Header updateData={this.updateData} />
-        <Game dataType={this.state.dataType} />
-        <Footer />
+        <Header
+          showSound={this.state.showSound}
+          showNight={this.state.showNight}
+          updateSound={this.updateSound}
+          updateMode={this.updateMode}
+          score={this.state.score}
+        />
+        <Game
+          showSound={this.state.showSound}
+          showNight={this.state.showNight}
+          score={this.state.score}
+          updateScore={this.updateScore}
+        />
+        <Footer
+          showNight={this.state.showNight}
+        />
       </BigBlock>
+    </ThemeProvider>
     );
   }
 };

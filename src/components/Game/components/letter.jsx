@@ -13,7 +13,8 @@ const Container = styled.div`
 
   margin-right: 1px;
 
-  background-color: ${props => (props.isDragging ? 'lightgreen' : 'white')};
+  background-color: ${props => (props.isDragging ? 'lightgreen' : 'inherit')};
+
   width: 3vw;
   height: 3vw;
 

@@ -56,6 +56,8 @@ const Button = styled.button`
 `;
 
 class Help extends React.Component {
+  audioButton = `https://zvukipro.com/uploads/files/2019-09/1568274526_c8fd8d10309e3e0.mp3`
+
   render() {
     return (
       <PopUpHelp>
@@ -69,7 +71,7 @@ class Help extends React.Component {
             If necessary, letters can be returned to the "Set of Letters", and also swap in the "Word".
             For each guessed word, you get +1 to the score.
           </div>
-        <div onClick={PlaySound}>
+        <div onClick={() => PlaySound(this.props.showSound, this.audioButton)}>
           <Button onClick={this.props.closePopup}><CancelIcon /></Button>
         </div>
         </PopUpHelpInner>

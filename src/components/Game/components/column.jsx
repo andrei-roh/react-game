@@ -6,10 +6,10 @@ import Letter from './letter';
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 12px;
+  padding: 6px;
   margin: 8px;
 `;
-const Title = styled.h3`
+const Title = styled.div`
   padding: 8px;
   text-align: center;
   font-weight: 700;
