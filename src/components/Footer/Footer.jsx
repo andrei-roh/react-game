@@ -1,7 +1,7 @@
 import React from 'react';
-import styled from 'styled-components'
-import authorPhoto from '../assets/images/author.jpg'
-import schoolLogo from '../assets/images/rs_school_js.svg'
+import styled from 'styled-components';
+import authorPhoto from '../assets/images/author.jpg';
+import schoolLogo from '../assets/images/rs_school_js.svg';
 
 const FooterBlock = styled.div`
   display: flex;

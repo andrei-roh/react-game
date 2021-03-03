@@ -1,10 +1,11 @@
 import React from 'react';
-import styled from 'styled-components'
+import styled from 'styled-components';
 import { DragDropContext } from 'react-beautiful-dnd';
 import initialData from './components/initial-data';
 import gameData from './components/game-data';
 import Column from './components/column';
 import PlaySound from '../Sound';
+import Victory from './components/victory';
 
 const Container = styled.div`
   display: flex;
@@ -16,7 +17,6 @@ const GameBlock = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  overflow: hidden;
 `;
 
 const ImageBlock = styled.div`
@@ -30,13 +30,19 @@ export class Game extends React.Component {
 
   dataState = gameData;
   changeData = this.dataState.list[Math.floor(Math.random() * this.dataState.list.length)];
+  showVictory = false;
 
-  audioStartTurn = `https://zvukipro.com/uploads/files/2020-03/1585120872_mb_card_deal_08.mp3`
-  audioEndTurn = `https://zvukipro.com/uploads/files/2020-03/1585121168_playing_cards_deck_set_down_on_table_20495.mp3`
-  audioWin = `https://zvukipro.com/uploads/files/2020-11/1604629147_7ddf02d658682f1.mp3`
+  toggleVictory() {
+    this.showVictory = !this.showVictory;
+  };
+
+  audioStartTurn = `https://zvukipro.com/uploads/files/2020-03/1585120872_mb_card_deal_08.mp3`;
+  audioEndTurn = `https://zvukipro.com/uploads/files/2020-03/1585121168_playing_cards_deck_set_down_on_table_20495.mp3`;
+  audioWin = `https://zvukipro.com/uploads/files/2020-11/1604629147_7ddf02d658682f1.mp3`;
+  audioVictory = `https://zvukipro.com/uploads/files/2020-07/1595050184_ljnn.mp3`;
 
   changeImage = (array) => {
-    return array.list[Math.floor(Math.random() * array.list.length)]
+    return array.list[Math.floor(Math.random() * array.list.length)];
   };
 
   onDragStart = () => {
@@ -45,8 +51,6 @@ export class Game extends React.Component {
   };
 
   onDragEnd = result => {
-    // document.body.style.color = 'inherit';
-    // document.body.style.backgroundColor = `inherit`;
     PlaySound(this.props.showSound, this.audioEndTurn);
 
     const { destination, source, draggableId } = result;
@@ -82,7 +86,7 @@ export class Game extends React.Component {
 
       this.setState(newState);
       return;
-    }
+    };
 
     //Moving between containers
     const startLetterIds = Array.from(start.letterIds);
@@ -116,8 +120,13 @@ export class Game extends React.Component {
 
       this.dataState = gameData;
       this.changeData = this.dataState.list[Math.floor(Math.random() * this.dataState.list.length)];
-    }
-  }
+
+      if (this.props.score === 10) {
+        PlaySound(this.props.showSound, this.audioVictory);
+        this.setState({ showVictory: true });
+      };
+    };
+  };
 
   render() {
     return (
@@ -134,6 +143,13 @@ export class Game extends React.Component {
           })}
           </Container>
         </DragDropContext>
+        {this.state.showVictory ?
+          <Victory
+            closePopup={this.toggleVictory.bind(this)}
+            showSound={this.props.showSound}
+          />
+          : null
+        }
       </GameBlock>
     );
   }

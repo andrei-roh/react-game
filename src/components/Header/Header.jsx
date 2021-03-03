@@ -42,8 +42,15 @@ const Button = styled.button`
   }
 
   &:hover {
+    box-shadow: 0 5px 20px -3px rgba(0, 0, 0, 0.1), 0 1px 0px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+  }
+
+  &:active {
     box-shadow: 0 5px 10px -3px rgba(0, 0, 0, 0.1), 0 1px 0px rgba(0, 0, 0, 0.1);
     cursor: pointer;
+    width: 49px;
+    heigth: 49px;
   }
 `;
 
@@ -53,12 +60,12 @@ export class Header extends React.Component {
     this.state = {
       showHelp: false,
     };
-  }
+  };
   toggleHelp() {
     this.setState({
       showHelp: !this.state.showHelp
     });
-  }
+  };
   audioButton = `https://zvukipro.com/uploads/files/2019-09/1568274526_c8fd8d10309e3e0.mp3`
 
   render() {
@@ -85,7 +92,7 @@ export class Header extends React.Component {
           </div>
           <div onClick={() => {
               this.props.updateSound(this.props.showSound, this.audioButton);
-              PlaySound(this.props.showSound, this.audioButton)
+              PlaySound(this.props.showSound, this.audioButton);
             }
           }>
             <Button>{this.props.showSound ? <VolumeUpIcon /> : <VolumeOffIcon />}</Button>
@@ -95,6 +102,7 @@ export class Header extends React.Component {
           <Help
             closePopup={this.toggleHelp.bind(this)}
             showSound={this.props.showSound}
+            showNight={this.props.showNight}
           />
           : null
         }

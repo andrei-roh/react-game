@@ -22,7 +22,7 @@ const PopUpHelpInner = styled.div`
   top: 25%;
   bottom: 25%;
   margin: auto;
-  background: white;
+  background: ${(props) => (props.children[0]._owner.memoizedProps.showNight ? '#363537' : 'white')};
   padding: 10px 20px 10px;
   text-align: justify;
   display: flex;
@@ -39,7 +39,6 @@ const Button = styled.button`
   justify-content: center;
   align-items: center;
   font-size: 18px;
-  font-family: 'Averia Libre', cursive;
   background-color: #f3727b;
   color: #fff;
   border: 0;
@@ -50,30 +49,34 @@ const Button = styled.button`
   &:focus {
     outline: none;
   }
+
   &:hover {
     box-shadow: 0 5px 10px -3px rgba(0, 0, 0, 0.1), 0 1px 0px rgba(0, 0, 0, 0.1);
   }
 `;
 
-class Help extends React.Component {
-  audioButton = `https://zvukipro.com/uploads/files/2019-09/1568274526_c8fd8d10309e3e0.mp3`
+const Caption = styled.div`
+  font-size: 30px;
+`;
 
+class Help extends React.Component {
+  audioButton = `https://zvukipro.com/uploads/files/2019-09/1568274526_c8fd8d10309e3e0.mp3`;
   render() {
     return (
       <PopUpHelp>
         <PopUpHelpInner>
-          <h1>Help</h1>
+          <Caption>Help</Caption>
           <div>The picture shows an object or an animal.
             In this game you need to collect word from the proposed letters.
-            To do this, the letters from the "Set of Letters" are moved to the "Word" using the Drag&Drop function.
+            To do this, move the letters from the "Set of Letters" to the "Word" using the Drag&Drop function.
             In addition to Drag and Drop, you can use the keyboard to move: Tab key - to find the desired letter,
             Space - to select/deselect, Arrows - to move
             If necessary, letters can be returned to the "Set of Letters", and also swap in the "Word".
-            For each guessed word, you get +1 to the score.
+            For each guessed word, you get +1 to the score. You need to get 10 points.
           </div>
-        <div onClick={() => PlaySound(this.props.showSound, this.audioButton)}>
-          <Button onClick={this.props.closePopup}><CancelIcon /></Button>
-        </div>
+          <div onClick={() => PlaySound(this.props.showSound, this.audioButton)}>
+            <Button onClick={this.props.closePopup}><CancelIcon /></Button>
+          </div>
         </PopUpHelpInner>
       </PopUpHelp>
     );

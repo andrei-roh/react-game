@@ -35,6 +35,7 @@ const initialData = {
     'letter33': { id: 'letter33', content: 'R'},
     'letter34': { id: 'letter34', content: 'R'},
     'letter35': { id: 'letter35', content: 'L'},
+    'letter36': { id: 'letter36', content: 'W'},
   },
   columns: {
     'column1': {
@@ -76,6 +77,7 @@ const initialData = {
         'letter33',
         'letter34',
         'letter35',
+        'letter36',
       ],
     },
     'column2': {

@@ -5,31 +5,33 @@ import { Draggable } from 'react-beautiful-dnd';
 const Container = styled.div`
   padding: 0.5px;
   border: 3px solid #f3727b;
-  border-radius: 50%;
+  border-radius: 35%;
+  margin-right: 1px;
+  background-color: ${props => (props.isDragging ? 'lightgreen' : 'inherit')};
+  width: 3vw;
+  height: 3vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+
   &:focus {
     outline: none;
     border-color: lightgreen;
   }
 
-  margin-right: 1px;
-
-  background-color: ${props => (props.isDragging ? 'lightgreen' : 'inherit')};
-
-  width: 3vw;
-  height: 3vw;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  font-size: 20px;
   &:hover {
-    box-shadow: 0 5px 10px -3px rgba(0, 0, 0, 0.1), 0 1px 0px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 5px 20px -3px rgba(0, 0, 0, 0.1), 0 1px 0px rgba(0, 0, 0, 0.1);
     cursor: pointer;
+  }
+
+  &:active {
+    width: 2.9vw;
+    height: 2.9vw;
   }
 `;
 
-export default class Letter extends React.Component {
+class Letter extends React.Component {
   render() {
     return (
       <Draggable draggableId={this.props.letter.id} index={this.props.index}>
@@ -46,4 +48,6 @@ export default class Letter extends React.Component {
       </Draggable>
     );
   };
-}
+};
+
+export default Letter;

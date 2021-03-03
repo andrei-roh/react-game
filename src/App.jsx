@@ -1,11 +1,11 @@
 import React from 'react';
-import styled, { ThemeProvider } from 'styled-components'
+import styled, { ThemeProvider } from 'styled-components';
 import { Header } from './components/Header/Header';
 import { Game } from './components/Game/Game';
 import { Footer } from './components/Footer/Footer';
 
 import { GlobalStyles } from './components/globalStyles';
-import { lightTheme, darkTheme } from './components/Themes'
+import { lightTheme, darkTheme } from './components/Themes';
 
 const BigBlock = styled.div`
   height: 100vh;
@@ -24,7 +24,7 @@ export class App extends React.Component {
       theme: 'light',
       score: 0
     };
-  }
+  };
   updateSound = (showSound) => {
     this.setState({ showSound: !showSound})
   };

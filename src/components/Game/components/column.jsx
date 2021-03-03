@@ -20,10 +20,10 @@ const LetterList = styled.div`
   min-height: 5vw;
   display: flex;
   justify-content: center;
-  overflow: hidden;
+  flex-wrap: wrap;
 `;
 
-export default class column extends React.Component {
+class Column extends React.Component {
   render() {
     return (
       <Container>
@@ -42,3 +42,5 @@ export default class column extends React.Component {
     );
   }
 }
+
+export default Column
