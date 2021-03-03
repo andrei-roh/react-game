@@ -3,7 +3,7 @@ import styled, { ThemeProvider } from 'styled-components';
 import { Header } from './components/Header/Header';
 import { Game } from './components/Game/Game';
 import { Footer } from './components/Footer/Footer';
-
+import { Menu } from './components/Menu';
 import { GlobalStyles } from './components/globalStyles';
 import { lightTheme, darkTheme } from './components/Themes';
 
@@ -19,6 +19,7 @@ export class App extends React.Component {
   constructor() {
     super();
     this.state = {
+      showMenu: true,
       showSound: false,
       showNight: false,
       theme: 'light',
@@ -34,6 +35,11 @@ export class App extends React.Component {
   };
   updateScore = (score) => {
     this.setState({ score: score + 1})
+  };
+  toggleMenu() {
+    this.setState({
+      showMenu: !this.state.showMenu
+    });
   };
 
   render() {
@@ -58,6 +64,12 @@ export class App extends React.Component {
           showNight={this.state.showNight}
         />
       </BigBlock>
+      {this.state.showMenu ?
+        <Menu
+          closePopup={this.toggleMenu.bind(this)}
+        />
+        : null
+      }
     </ThemeProvider>
     );
   }

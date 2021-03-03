@@ -7,6 +7,7 @@ const Container = styled.div`
   border: 3px solid #f3727b;
   border-radius: 35%;
   margin-right: 1px;
+  margin-top: 1px;
   background-color: ${props => (props.isDragging ? 'lightgreen' : 'inherit')};
   width: 3vw;
   height: 3vw;
