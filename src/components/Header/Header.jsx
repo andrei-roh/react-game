@@ -11,7 +11,6 @@ import MusicNoteIcon from '@material-ui/icons/MusicNote';
 import MusicOffIcon from '@material-ui/icons/MusicOff';
 import Help from './components/help';
 import PlaySound from '../Sound';
-import PlayMusic from '../Music';
 
 const HeaderBlock = styled.div`
   display: flex;
@@ -63,13 +62,17 @@ export class Header extends React.Component {
     super();
     this.state = {
       showHelp: false,
+      isAudioPlay: false,
+      isAudioPause: true
     };
+    this.audio = new Audio('https://zvukipro.com/uploads/files/2021-02/1613150596_meditacii-chakry-jetno-relaks.mp3');
   };
   toggleHelp() {
     this.setState({
       showHelp: !this.state.showHelp
     });
   };
+
   audioButton = `https://zvukipro.com/uploads/files/2019-09/1568274526_c8fd8d10309e3e0.mp3`
 
   render() {
@@ -113,8 +116,10 @@ export class Header extends React.Component {
           </div>
           <div onClick={() => {
               PlaySound(this.props.showSound, this.audioButton);
+              this.setState({ isAudioPlay: !this.state.isAudioPlay });
               this.props.updateMusic(this.props.showMusic);
-              PlayMusic(this.props.showMusic);
+              this.state.isAudioPlay ? this.audio.pause() : this.audio.play();
+
             }}
             title='music on/off'
           >
