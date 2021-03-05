@@ -17,10 +17,10 @@ const PopUpHelp = styled.div`
 
 const PopUpHelpInner = styled.div`
   position: absolute;
-  left: 25%;
-  right: 25%;
-  top: 25%;
-  bottom: 25%;
+  left: 22%;
+  right: 22%;
+  top: 22%;
+  bottom: 22%;
   margin: auto;
   background: ${(props) => (props.children[0]._owner.memoizedProps.showNight ? '#363537' : 'white')};
   padding: 10px 20px 10px;
@@ -66,14 +66,20 @@ class Help extends React.Component {
       <PopUpHelp>
         <PopUpHelpInner>
           <Caption>Help</Caption>
-          <div>The picture shows an object or an animal.
-            In this game you need to collect word from the proposed letters.
-            To do this, move the letters from the "Set of Letters" to the "Word" using the Drag&Drop function.
-            In addition to Drag and Drop, you can use the keyboard to move: Tab key - to find the desired letter,
-            Space - to select/deselect, Arrows - to move
-            If necessary, letters can be returned to the "Set of Letters", and also swap in the "Word".
-            For each guessed word, you get +1 to the score. You need to get 10 points.
+          <div>Guess the Word — это простая игра.
+            На экране показывается изображение предмета либо животного.
+            Необходимо отгадать, что изображено и собрать из букв это слово.
+            Для этого у игрока имеется Набор букв. Буквы перемещаются в Слово.
           </div>
+          <div>
+            При верной комбинации букв, игрок получает +1 к очкам
+            и изображение меняется.
+            При достижении 10 очков игрок побеждает.
+            Кроме перетаскивания с помощью мыши, можно воспользоваться клавиатурой:
+          </div>
+          <div>TAB - для выделения буквы,</div>
+          <div>SPACE - для выбора буквы,</div>
+          <div>ARROWS - для перемещения буквы.</div>
           <div onClick={() => PlaySound(this.props.showSound, this.audioButton)}>
             <Button onClick={this.props.closePopup}><CancelIcon /></Button>
           </div>

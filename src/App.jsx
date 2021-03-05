@@ -20,20 +20,29 @@ export class App extends React.Component {
     this.state = {
       showMenu: true,
       showSound: false,
+      showMusic: true,
       showNight: false,
       theme: 'light',
-      score: 0
+      score: localStorage.getItem('score') === '0' ? 0 : localStorage.getItem('score')
     };
   };
   updateSound = (showSound) => {
     this.setState({ showSound: !showSound})
+  };
+  updateMusic = (showMusic) => {
+    this.setState({ showMusic: !showMusic})
   };
   updateMode = (showNight) => {
     this.setState({ showNight: !showNight});
     this.state.theme === 'light' ? this.setState({ theme: 'dark'}) : this.setState({ theme: 'light'});
   };
   updateScore = (score) => {
-    this.setState({ score: score + 1})
+    this.setState({ score: score += 1});
+    localStorage.setItem('score', score);
+  };
+  resetScore = (score) => {
+    this.setState({ score: 0 });
+    localStorage.setItem('score', score);
   };
   toggleMenu() {
     this.setState({
@@ -48,10 +57,13 @@ export class App extends React.Component {
       <BigBlock>
         <Header
           showSound={this.state.showSound}
+          showMusic={this.state.showMusic}
           showNight={this.state.showNight}
           updateSound={this.updateSound}
+          updateMusic={this.updateMusic}
           updateMode={this.updateMode}
           score={this.state.score}
+          resetScore={this.resetScore}
         />
         <Game
           showSound={this.state.showSound}

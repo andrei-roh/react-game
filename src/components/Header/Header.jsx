@@ -6,8 +6,12 @@ import VolumeUpIcon from '@material-ui/icons/VolumeUp';
 import VolumeOffIcon from '@material-ui/icons/VolumeOff';
 import WbSunnyIcon from '@material-ui/icons/WbSunny';
 import Brightness2Icon from '@material-ui/icons/Brightness2';
+import AutorenewIcon from '@material-ui/icons/Autorenew';
+import MusicNoteIcon from '@material-ui/icons/MusicNote';
+import MusicOffIcon from '@material-ui/icons/MusicOff';
 import Help from './components/help';
 import PlaySound from '../Sound';
+import PlayMusic from '../Music';
 
 const HeaderBlock = styled.div`
   display: flex;
@@ -80,22 +84,41 @@ export class Header extends React.Component {
           <div>Score: {this.props.score}</div>
         </HeaderElement>
         <HeaderElement>
+          <div onClick={() => PlaySound(this.props.showSound, this.audioButton)} title='restart game'>
+            <Button onClick={() => {
+                this.props.resetScore(this.props.score);
+                localStorage.setItem('score', 0);
+              }}
+            ><AutorenewIcon /></Button>
+          </div>
           <div onClick={() => {
               PlaySound(this.props.showSound, this.audioButton);
               this.props.updateMode(this.props.showNight);
-            }
-          }>
+            }}
+             title='change theme'
+            >
             <Button>{this.props.showNight ? <Brightness2Icon /> : <WbSunnyIcon />}</Button>
           </div>
-          <div onClick={() => PlaySound(this.props.showSound, this.audioButton)}>
+          <div onClick={() => PlaySound(this.props.showSound, this.audioButton)} title='help'
+>
             <Button onClick={this.toggleHelp.bind(this)}><HelpIcon /></Button>
           </div>
           <div onClick={() => {
               this.props.updateSound(this.props.showSound, this.audioButton);
               PlaySound(this.props.showSound, this.audioButton);
-            }
-          }>
+            }}
+            title='sound on/off'
+          >
             <Button>{this.props.showSound ? <VolumeUpIcon /> : <VolumeOffIcon />}</Button>
+          </div>
+          <div onClick={() => {
+              PlaySound(this.props.showSound, this.audioButton);
+              this.props.updateMusic(this.props.showMusic);
+              PlayMusic(this.props.showMusic);
+            }}
+            title='music on/off'
+          >
+            <Button>{this.props.showMusic ? <MusicOffIcon /> : <MusicNoteIcon />}</Button>
           </div>
         </HeaderElement>
         {this.state.showHelp ?
