@@ -9,7 +9,9 @@ import Brightness2Icon from '@material-ui/icons/Brightness2';
 import AutorenewIcon from '@material-ui/icons/Autorenew';
 import MusicNoteIcon from '@material-ui/icons/MusicNote';
 import MusicOffIcon from '@material-ui/icons/MusicOff';
+import EqualizerIcon from '@material-ui/icons/Equalizer';
 import Help from './components/help';
+import Statistic from './components/statistic';
 import PlaySound from '../Sound';
 
 const HeaderBlock = styled.div`
@@ -62,6 +64,7 @@ export class Header extends React.Component {
     super();
     this.state = {
       showHelp: false,
+      showStatistic: false,
       isAudioPlay: false,
       isAudioPause: true
     };
@@ -70,6 +73,11 @@ export class Header extends React.Component {
   toggleHelp() {
     this.setState({
       showHelp: !this.state.showHelp
+    });
+  };
+  toggleStatistic() {
+    this.setState({
+      showStatistic: !this.state.showStatistic
     });
   };
 
@@ -87,7 +95,12 @@ export class Header extends React.Component {
           <div>Score: {this.props.score}</div>
         </HeaderElement>
         <HeaderElement>
-          <div onClick={() => PlaySound(this.props.showSound, this.audioButton)} title='restart game'>
+          <div onClick={() => PlaySound(this.props.showSound, this.audioButton)} title='statistic'
+>
+            <Button onClick={this.toggleStatistic.bind(this)}><EqualizerIcon /></Button>
+          </div>
+
+          <div onClick={() => PlaySound(this.props.showSound, this.audioButton)} title='reset score'>
             <Button onClick={() => {
                 this.props.resetScore(this.props.score);
                 localStorage.setItem('score', 0);
@@ -131,6 +144,16 @@ export class Header extends React.Component {
             closePopup={this.toggleHelp.bind(this)}
             showSound={this.props.showSound}
             showNight={this.props.showNight}
+          />
+          : null
+        }
+        {this.state.showStatistic ?
+          <Statistic
+            closePopup={this.toggleStatistic.bind(this)}
+            showSound={this.props.showSound}
+            showNight={this.props.showNight}
+            score={this.props.score}
+            name={this.props.name}
           />
           : null
         }

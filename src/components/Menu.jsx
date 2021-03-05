@@ -55,6 +55,13 @@ const Button = styled.button`
   &:hover {
     box-shadow: 0 5px 10px -3px rgba(0, 0, 0, 0.1), 0 1px 0px rgba(0, 0, 0, 0.1);
   }
+
+  &:active {
+    box-shadow: 0 5px 10px -3px rgba(0, 0, 0, 0.1), 0 1px 0px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    width: 49px;
+    heigth: 49px;
+  }
 `;
 const GameHead = styled.div`
   font-size: 30px;
@@ -67,6 +74,15 @@ const MenuPoints = styled.div`
   justify-content: space-around;
   align-items: center;
 `;
+
+const Input = styled.input`
+  margin-top: 5px;
+  margin-bottom: 5px;
+  border-radius: 4px;
+  border: solid 2px #f3727b;
+  font-size: 18px;
+`;
+
 
 export class Menu extends React.Component {
   constructor() {
@@ -86,6 +102,9 @@ export class Menu extends React.Component {
         <PopUpMenuInner>
           <GameHead>Guess the Word</GameHead>
           <div>Logic game</div>
+          <div>
+            <Input type='text' placeholder='enter your name' onChange={this.props.changeName} />
+          </div>
           <MenuPoints>
             <div>
               <Button onClick={this.props.closePopup}><PlayArrowIcon /></Button>

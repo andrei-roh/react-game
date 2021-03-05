@@ -18,6 +18,7 @@ export class App extends React.Component {
   constructor() {
     super();
     this.state = {
+      name: '',
       showMenu: true,
       showSound: false,
       showMusic: true,
@@ -25,6 +26,11 @@ export class App extends React.Component {
       theme: 'light',
       score: localStorage.getItem('score') === '0' ? 0 : localStorage.getItem('score')
     };
+  };
+  changeName(name) {
+    this.setState({
+      name: name.target.value
+    });
   };
   updateSound = (showSound) => {
     this.setState({ showSound: !showSound})
@@ -64,12 +70,15 @@ export class App extends React.Component {
           updateMode={this.updateMode}
           score={this.state.score}
           resetScore={this.resetScore}
+          name={this.state.name}
         />
         <Game
           showSound={this.state.showSound}
           showNight={this.state.showNight}
           score={this.state.score}
           updateScore={this.updateScore}
+          resetScore={this.resetScore}
+          name={this.state.name}
         />
         <Footer
           showNight={this.state.showNight}
@@ -78,6 +87,7 @@ export class App extends React.Component {
       {this.state.showMenu ?
         <Menu
           closePopup={this.toggleMenu.bind(this)}
+          changeName={this.changeName.bind(this)}
         />
         : null
       }

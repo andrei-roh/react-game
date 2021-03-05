@@ -33,7 +33,9 @@ export class Game extends React.Component {
   showVictory = false;
 
   toggleVictory() {
-    this.showVictory = !this.showVictory;
+    this.setState({
+      showVictory: !this.state.showVictory
+    });
   };
 
   audioStartTurn = `https://zvukipro.com/uploads/files/2020-03/1585120872_mb_card_deal_08.mp3`;
@@ -121,8 +123,9 @@ export class Game extends React.Component {
       this.dataState = gameData;
       this.changeData = this.dataState.list[Math.floor(Math.random() * this.dataState.list.length)];
 
-      if (this.props.score === 10) {
+      if (this.props.score === 9) {
         PlaySound(this.props.showSound, this.audioVictory);
+        this.props.resetScore(this.props.score);
         this.setState({ showVictory: true });
       };
     };
@@ -147,6 +150,7 @@ export class Game extends React.Component {
           <Victory
             closePopup={this.toggleVictory.bind(this)}
             showSound={this.props.showSound}
+            name={this.props.name}
           />
           : null
         }

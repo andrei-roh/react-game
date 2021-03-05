@@ -30,16 +30,18 @@ const PopUpVictoryInner = styled.div`
   align-items: center;
 `;
 
+const Caption = styled.div`
+  font-size: 30px;
+`;
+
 class Victory extends React.Component {
   render() {
     return (
-      <PopUpVictory>
+      <PopUpVictory onClick={this.props.closePopup}>
         <PopUpVictoryInner>
-          <div>YOU WIN! CLICK TO RESTART</div>
+          <Caption>YOU WIN, {this.props.name}!</Caption>
           <div>
-            <a href='.'>
-              <img width='82%' src={gameVictory} alt='gameVictory' />
-            </a>
+            <img width='75%' src={gameVictory} alt='gameVictory' />
           </div>
         </PopUpVictoryInner>
       </PopUpVictory>
