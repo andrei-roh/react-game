@@ -32,6 +32,7 @@ const PopUpVictoryInner = styled.div`
 
 const Caption = styled.div`
   font-size: 30px;
+  color: black;
 `;
 
 class Victory extends React.Component {

@@ -24,7 +24,7 @@ export class App extends React.Component {
       showMusic: true,
       showNight: false,
       theme: 'light',
-      score: localStorage.getItem('score') === '0' ? 0 : localStorage.getItem('score')
+      score: localStorage.getItem('score') === '0' ? 0 : Number(localStorage.getItem('score'))
     };
   };
   changeName(name) {
@@ -46,9 +46,9 @@ export class App extends React.Component {
     this.setState({ score: score += 1});
     localStorage.setItem('score', score);
   };
-  resetScore = (score) => {
+  resetScore = () => {
     this.setState({ score: 0 });
-    localStorage.setItem('score', score);
+    localStorage.setItem('score', 0);
   };
   toggleMenu() {
     this.setState({

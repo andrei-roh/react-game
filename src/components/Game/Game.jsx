@@ -133,8 +133,6 @@ export class Game extends React.Component {
       };
 
       let finishLetterIds = Array.from(this.beforeFinish.letterIds);
-      console.log(finishLetterIds)
-
       const newFinish = {
         ...this.beforeFinish,
         letterIds: finishLetterIds,
