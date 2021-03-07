@@ -21,6 +21,7 @@ const LetterList = styled.div`
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  overflow: hidden;
 `;
 
 class Column extends React.Component {
