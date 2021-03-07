@@ -80,7 +80,7 @@ const Input = styled.input`
   margin-bottom: 5px;
   border-radius: 4px;
   border: solid 2px #f3727b;
-  font-size: 18px;
+  font-size: 14px;
 `;
 
 
@@ -103,7 +103,7 @@ export class Menu extends React.Component {
           <GameHead>Guess the Word</GameHead>
           <div>Logic game</div>
           <div>
-            <Input type='text' placeholder='enter your name' onChange={this.props.changeName} />
+            <Input type='text' placeholder='Enter your name' onChange={this.props.changeName} />
           </div>
           <MenuPoints>
             <div>

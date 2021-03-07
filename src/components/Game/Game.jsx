@@ -43,6 +43,9 @@ export class Game extends React.Component {
   audioWin = `https://zvukipro.com/uploads/files/2020-11/1604629147_7ddf02d658682f1.mp3`;
   audioVictory = `https://zvukipro.com/uploads/files/2020-07/1595050184_ljnn.mp3`;
 
+  beforeStart = this.state.columns.column1;
+  beforeFinish = this.state.columns.column2;
+
   changeImage = (array) => {
     return array.list[Math.floor(Math.random() * array.list.length)];
   };
@@ -122,6 +125,29 @@ export class Game extends React.Component {
 
       this.dataState = gameData;
       this.changeData = this.dataState.list[Math.floor(Math.random() * this.dataState.list.length)];
+
+      const startLetterIds = Array.from(this.beforeStart.letterIds);
+      const newStart = {
+        ...this.beforeStart,
+        letterIds: startLetterIds,
+      };
+
+      let finishLetterIds = Array.from(this.beforeFinish.letterIds);
+      console.log(finishLetterIds)
+
+      const newFinish = {
+        ...this.beforeFinish,
+        letterIds: finishLetterIds,
+      };
+      const newState = {
+        ...this.state,
+        columns: {
+          ...this.state.columns,
+          [newStart.id]: newStart,
+          [newFinish.id]: newFinish,
+        },
+      };
+      this.setState(newState);
 
       if (this.props.score === 9) {
         PlaySound(this.props.showSound, this.audioVictory);
