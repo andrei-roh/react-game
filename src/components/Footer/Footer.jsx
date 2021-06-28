@@ -23,17 +23,17 @@ export class Footer extends React.Component {
     return (
       <FooterBlock>
         <FooterElement>
-          <a href='https://github.com/andrei-roh'>
-            <img width='30px' src={authorPhoto} alt='author' />
+          <a href="https://github.com/andrei-roh">
+            <img width="30px" src={authorPhoto} alt="author" />
           </a>
         </FooterElement>
         <FooterElement>
-          <a href='https://rs.school/js/'>
-            <img width='30px' src={schoolLogo} alt='course' />
+          <a href="https://rs.school/js/">
+            <img width="30px" src={schoolLogo} alt="course" />
           </a>
         </FooterElement>
         <FooterElement>2021</FooterElement>
       </FooterBlock>
     );
   }
-};
+}

@@ -24,26 +24,31 @@ export class App extends React.Component {
       showMusic: true,
       showNight: false,
       theme: 'light',
-      score: localStorage.getItem('score') === '0' ? 0 : Number(localStorage.getItem('score'))
+      score:
+        localStorage.getItem('score') === '0'
+          ? 0
+          : Number(localStorage.getItem('score')),
     };
-  };
+  }
   changeName(name) {
     this.setState({
-      name: name.target.value
+      name: name.target.value,
     });
-  };
+  }
   updateSound = (showSound) => {
-    this.setState({ showSound: !showSound})
+    this.setState({ showSound: !showSound });
   };
   updateMusic = (showMusic) => {
-    this.setState({ showMusic: !showMusic})
+    this.setState({ showMusic: !showMusic });
   };
   updateMode = (showNight) => {
-    this.setState({ showNight: !showNight});
-    this.state.theme === 'light' ? this.setState({ theme: 'dark'}) : this.setState({ theme: 'light'});
+    this.setState({ showNight: !showNight });
+    this.state.theme === 'light'
+      ? this.setState({ theme: 'dark' })
+      : this.setState({ theme: 'light' });
   };
   updateScore = (score) => {
-    this.setState({ score: score += 1});
+    this.setState({ score: (score += 1) });
     localStorage.setItem('score', score);
   };
   resetScore = () => {
@@ -52,46 +57,45 @@ export class App extends React.Component {
   };
   toggleMenu() {
     this.setState({
-      showMenu: !this.state.showMenu
+      showMenu: !this.state.showMenu,
     });
-  };
+  }
 
   render() {
     return (
-      <ThemeProvider theme={this.state.theme === 'light' ? lightTheme : darkTheme}>
-      <GlobalStyles/>
-      <BigBlock>
-        <Header
-          showSound={this.state.showSound}
-          showMusic={this.state.showMusic}
-          showNight={this.state.showNight}
-          updateSound={this.updateSound}
-          updateMusic={this.updateMusic}
-          updateMode={this.updateMode}
-          score={this.state.score}
-          resetScore={this.resetScore}
-          name={this.state.name}
-        />
-        <Game
-          showSound={this.state.showSound}
-          showNight={this.state.showNight}
-          score={this.state.score}
-          updateScore={this.updateScore}
-          resetScore={this.resetScore}
-          name={this.state.name}
-        />
-        <Footer
-          showNight={this.state.showNight}
-        />
-      </BigBlock>
-      {this.state.showMenu ?
-        <Menu
-          closePopup={this.toggleMenu.bind(this)}
-          changeName={this.changeName.bind(this)}
-        />
-        : null
-      }
-    </ThemeProvider>
+      <ThemeProvider
+        theme={this.state.theme === 'light' ? lightTheme : darkTheme}
+      >
+        <GlobalStyles />
+        <BigBlock>
+          <Header
+            showSound={this.state.showSound}
+            showMusic={this.state.showMusic}
+            showNight={this.state.showNight}
+            updateSound={this.updateSound}
+            updateMusic={this.updateMusic}
+            updateMode={this.updateMode}
+            score={this.state.score}
+            resetScore={this.resetScore}
+            name={this.state.name}
+          />
+          <Game
+            showSound={this.state.showSound}
+            showNight={this.state.showNight}
+            score={this.state.score}
+            updateScore={this.updateScore}
+            resetScore={this.resetScore}
+            name={this.state.name}
+          />
+          <Footer showNight={this.state.showNight} />
+        </BigBlock>
+        {this.state.showMenu ? (
+          <Menu
+            closePopup={this.toggleMenu.bind(this)}
+            changeName={this.changeName.bind(this)}
+          />
+        ) : null}
+      </ThemeProvider>
     );
   }
-};
+}

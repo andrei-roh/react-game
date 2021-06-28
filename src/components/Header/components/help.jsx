@@ -12,7 +12,7 @@ const PopUpHelp = styled.div`
   right: 0;
   bottom: 0;
   margin: auto;
-  background-color: rgba(0,0,0, 0.5);
+  background-color: rgba(0, 0, 0, 0.5);
 `;
 
 const PopUpHelpInner = styled.div`
@@ -22,7 +22,8 @@ const PopUpHelpInner = styled.div`
   top: 22%;
   bottom: 22%;
   margin: auto;
-  background: ${(props) => (props.children[0]._owner.memoizedProps.showNight ? '#363537' : 'white')};
+  background: ${(props) =>
+    props.children[0]._owner.memoizedProps.showNight ? '#363537' : 'white'};
   padding: 10px 20px 10px;
   text-align: justify;
   display: flex;
@@ -66,29 +67,33 @@ const Caption = styled.div`
   font-size: 30px;
 `;
 
-class Help extends React.Component {
+class Help extends React.Component {
   audioButton = `https://zvukipro.com/uploads/files/2019-09/1568274526_c8fd8d10309e3e0.mp3`;
   render() {
     return (
       <PopUpHelp>
         <PopUpHelpInner>
           <Caption>Help</Caption>
-          <div>Guess the Word — это простая игра.
-            На экране показывается изображение предмета либо животного.
-            Необходимо отгадать, что изображено и собрать из букв это слово.
-            Для этого у игрока имеется Набор букв. Буквы перемещаются в Слово.
+          <div>
+            Guess the Word — это простая игра. На экране показывается
+            изображение предмета либо животного. Необходимо отгадать, что
+            изображено и собрать из букв это слово. Для этого у игрока имеется
+            Набор букв. Буквы перемещаются в Слово.
           </div>
           <div>
-            При верной комбинации букв, игрок получает +1 к очкам
-            и изображение меняется.
-            При достижении 10 очков игрок побеждает.
-            Кроме перетаскивания с помощью мыши, можно воспользоваться клавиатурой:
+            При верной комбинации букв, игрок получает +1 к очкам и изображение
+            меняется. При достижении 10 очков игрок побеждает. Кроме
+            перетаскивания с помощью мыши, можно воспользоваться клавиатурой:
           </div>
           <div>TAB - для выделения буквы,</div>
           <div>SPACE - для выбора буквы,</div>
           <div>ARROWS - для перемещения буквы.</div>
-          <div onClick={() => PlaySound(this.props.showSound, this.audioButton)}>
-            <Button onClick={this.props.closePopup}><CancelIcon /></Button>
+          <div
+            onClick={() => PlaySound(this.props.showSound, this.audioButton)}
+          >
+            <Button onClick={this.props.closePopup}>
+              <CancelIcon />
+            </Button>
           </div>
         </PopUpHelpInner>
       </PopUpHelp>

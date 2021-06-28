@@ -8,13 +8,13 @@ const Container = styled.div`
   border-radius: 35%;
   margin-right: 1px;
   margin-top: 1px;
-  background-color: ${props => (props.isDragging ? 'lightgreen' : 'inherit')};
-  width: 3vw;
-  height: 3vw;
+  background-color: ${(props) => (props.isDragging ? 'lightgreen' : 'inherit')};
+  width: 2vw;
+  height: 2vw;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 20px;
+  font-size: 15px;
 
   &:focus {
     outline: none;
@@ -48,7 +48,7 @@ class Letter extends React.Component {
         )}
       </Draggable>
     );
-  };
-};
+  }
+}
 
 export default Letter;

@@ -14,7 +14,7 @@ const PopUpMenu = styled.div`
   right: 0;
   bottom: 0;
   margin: auto;
-  background-color: rgba(0,0,0, 0.9);
+  background-color: rgba(0, 0, 0, 0.9);
 `;
 
 const PopUpMenuInner = styled.div`
@@ -24,7 +24,8 @@ const PopUpMenuInner = styled.div`
   top: 32%;
   bottom: 32%;
   margin: auto;
-  background: ${(props) => (props.children[0]._owner.memoizedProps.showNight ? '#363537' : 'white')};
+  background: ${(props) =>
+    props.children[0]._owner.memoizedProps.showNight ? '#363537' : 'white'};
   padding: 10px 20px 10px;
   text-align: justify;
   display: flex;
@@ -83,19 +84,18 @@ const Input = styled.input`
   font-size: 14px;
 `;
 
-
-export class Menu extends React.Component {
+export class Menu extends React.Component {
   constructor() {
     super();
     this.state = {
       showHelp: false,
     };
-  };
+  }
   toggleHelp() {
     this.setState({
-      showHelp: !this.state.showHelp
+      showHelp: !this.state.showHelp,
     });
-  };
+  }
   render() {
     return (
       <PopUpMenu>
@@ -103,28 +103,37 @@ export class Menu extends React.Component {
           <GameHead>Guess the Word</GameHead>
           <div>Logic game</div>
           <div>
-            <Input type='text' placeholder='Enter your name' onChange={this.props.changeName} />
+            <Input
+              type="text"
+              placeholder="Enter your name"
+              onChange={this.props.changeName}
+            />
           </div>
           <MenuPoints>
             <div>
-              <Button onClick={this.props.closePopup}><PlayArrowIcon /></Button>
+              <Button onClick={this.props.closePopup}>
+                <PlayArrowIcon />
+              </Button>
             </div>
             <div>
-              <form action='https://github.com/andrei-roh/react-game/tree/react-game' target='_blank'>
-                <Button onClick={this.props.closePopup}><GitHubIcon /></Button>
+              <form
+                action="https://github.com/andrei-roh/react-game/tree/react-game"
+                target="_blank"
+              >
+                <Button onClick={this.props.closePopup}>
+                  <GitHubIcon />
+                </Button>
               </form>
             </div>
             <div>
-              <Button onClick={this.toggleHelp.bind(this)}><HelpIcon /></Button>
+              <Button onClick={this.toggleHelp.bind(this)}>
+                <HelpIcon />
+              </Button>
             </div>
           </MenuPoints>
-          {this.state.showHelp ?
-            <Help
-              closePopup={this.toggleHelp.bind(this)}
-              showSound={false}
-            />
-            : null
-          }
+          {this.state.showHelp ? (
+            <Help closePopup={this.toggleHelp.bind(this)} showSound={false} />
+          ) : null}
         </PopUpMenuInner>
       </PopUpMenu>
     );

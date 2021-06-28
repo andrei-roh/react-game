@@ -11,7 +11,7 @@ const PopUpVictory = styled.div`
   right: 0;
   bottom: 0;
   margin: auto;
-  background-color: rgba(0,0,0, 0.5);
+  background-color: rgba(0, 0, 0, 0.5);
 `;
 
 const PopUpVictoryInner = styled.div`
@@ -35,19 +35,19 @@ const Caption = styled.div`
   color: black;
 `;
 
-class Victory extends React.Component {
+class Victory extends React.Component {
   render() {
     return (
       <PopUpVictory onClick={this.props.closePopup}>
         <PopUpVictoryInner>
           <Caption>YOU WIN, {this.props.name}!</Caption>
           <div>
-            <img width='75%' src={gameVictory} alt='gameVictory' />
+            <img width="75%" src={gameVictory} alt="gameVictory" />
           </div>
         </PopUpVictoryInner>
       </PopUpVictory>
     );
-  };
-};
+  }
+}
 
 export default Victory;

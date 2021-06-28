@@ -12,7 +12,7 @@ const PopUpStatistic = styled.div`
   right: 0;
   bottom: 0;
   margin: auto;
-  background-color: rgba(0,0,0, 0.5);
+  background-color: rgba(0, 0, 0, 0.5);
 `;
 
 const PopUpStatisticInner = styled.div`
@@ -22,7 +22,8 @@ const PopUpStatisticInner = styled.div`
   top: 22%;
   bottom: 22%;
   margin: auto;
-  background: ${(props) => (props.children[0]._owner.memoizedProps.showNight ? '#363537' : 'white')};
+  background: ${(props) =>
+    props.children[0]._owner.memoizedProps.showNight ? '#363537' : 'white'};
   padding: 10px 20px 10px;
   text-align: justify;
   display: flex;
@@ -66,19 +67,22 @@ const Caption = styled.div`
   font-size: 30px;
 `;
 
-class Statistic extends React.Component {
+class Statistic extends React.Component {
   audioButton = `https://zvukipro.com/uploads/files/2019-09/1568274526_c8fd8d10309e3e0.mp3`;
   render() {
     return (
       <PopUpStatistic>
         <PopUpStatisticInner>
           <Caption>List of winners</Caption>
-          {this.props.score === 9 ?
+          {this.props.score === 9 ? (
             <Caption>{this.props.name} is a Winner!</Caption>
-            : null
-          }
-          <div onClick={() => PlaySound(this.props.showSound, this.audioButton)}>
-            <Button onClick={this.props.closePopup}><CancelIcon /></Button>
+          ) : null}
+          <div
+            onClick={() => PlaySound(this.props.showSound, this.audioButton)}
+          >
+            <Button onClick={this.props.closePopup}>
+              <CancelIcon />
+            </Button>
           </div>
         </PopUpStatisticInner>
       </PopUpStatistic>
