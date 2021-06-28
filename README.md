@@ -8,7 +8,7 @@
 4. npm install;
 5. npm start;
 
-Или вы можете использовать [демо](https://andrei-roh-react-game.netlify.app/).
+Или Вы можете использовать [демо](https://andrei-roh-react-game.netlify.app/).
 
 ## О проекте:
 
